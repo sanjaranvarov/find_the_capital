@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Results</title>
+    <link rel="stylesheet" href="results.css">
+</head>
+<body>
+<div class="results-container">
+    <h1>Game Over</h1>
+    <div id="score-container">
+        <p><strong>Your Score:</strong> <span id="score"></span> / 10</p>
+    </div>
+    <div id="message-container">
+        <p id="endMessage"></p>
+    </div>
+    <button id="restartGame">Play Again</button>
+</div>
+
+<script>
+    // Retrieve game results from localStorage
+    const gameResults = JSON.parse(localStorage.getItem('gameResults'));
+
+    // Display the score
+    const scoreElement = document.getElementById('score');
+    const messageElement = document.getElementById('endMessage');
+    if (gameResults) {
+        scoreElement.textContent = gameResults.score;
+
+        // Determine the end message
+        const score = gameResults.score;
+        let endMessage = '';
+        if (score === 10) {
+            endMessage = 'YOU ARE A GENIUS!';
+        } else if (score >= 7) {
+            endMessage = 'GREAT JOB!';
+        } else if (score >= 4) {
+            endMessage = 'YOU CAN DO BETTER.';
+        } else {
+            endMessage = 'TRY HARDER NEXT TIME.';
+        }
+
+        messageElement.textContent = endMessage;
+    } else {
+        scoreElement.textContent = 'N/A';
+        messageElement.textContent = 'No game results found.';
+    }
+
+    // Restart the game
+    document.getElementById('restartGame').addEventListener('click', () => {
+        window.open('index.html', '_self'); // Redirects back to the main game
+    });
+</script>
+</body>
+</html>

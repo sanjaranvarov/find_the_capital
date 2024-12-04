@@ -60,18 +60,14 @@ const displayQuestion = () => {
         document.getElementById('result').innerText = 'GAME OVER!';
         clearInterval(timerId);
 
-        let endMessage = '';
-        if (score === 10) {
-            endMessage = 'YOU ARE A GENIUS!';
-        } else if (score >= 7) {
-            endMessage = 'GREAT JOB!';
-        } else if (score >= 4) {
-            endMessage = 'YOU CAN DO BETTER.';
-        } else {
-            endMessage = 'TRY HARDER NEXT TIME.';
-        }
-
+        const endMessage = getEndMessage(score);
         document.getElementById('endMessage').innerText = endMessage;
+
+        // Save results to localStorage
+        localStorage.setItem('gameResults', JSON.stringify({ score, totalQuestions: 10 }));
+
+        // Open results page
+        setTimeout(() => window.open('results.html', '_blank'), 2000);
         document.getElementById('restartGame').disabled = false;
         return;
     }
@@ -82,7 +78,9 @@ const displayQuestion = () => {
 
     const options = [questionCountry, ...otherOptions].sort(() => Math.random() - 0.5);
 
-    document.getElementById('questionContainer').innerText = `QUESTION ${currentQuestionIndex + 1}: WHAT IS THE CAPITAL OF ${questionCountry.name.common}?`;
+    document.getElementById('questionContainer').innerText =
+        `QUESTION ${currentQuestionIndex + 1}: WHAT IS THE CAPITAL OF ${questionCountry.name.common}?`;
+
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
 
@@ -92,6 +90,19 @@ const displayQuestion = () => {
         button.onclick = () => checkAnswer(button, option.capital?.[0], questionCountry.capital?.[0]);
         optionsContainer.appendChild(button);
     });
+};
+
+// Function to get end-game message
+const getEndMessage = (score) => {
+    if (score === 10) {
+        return 'YOU ARE A GENIUS!';
+    } else if (score >= 7) {
+        return 'GREAT JOB!';
+    } else if (score >= 4) {
+        return 'YOU CAN DO BETTER.';
+    } else {
+        return 'TRY HARDER NEXT TIME.';
+    }
 };
 
 // Function to check the selected answer

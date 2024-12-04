@@ -1,0 +1,57 @@
+:root {
+    --background-color: #f4f4f9;
+    --text-color: #333;
+    --primary-color: #0071ff;
+    --secondary-color: #4caf50;
+    --error-color: #f44336;
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.results-container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+.results-container h1 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.8em;
+}
+
+#score-container p,
+#message-container p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+#restartGame {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#restartGame:hover {
+    background-color: var(--secondary-color);
+}
