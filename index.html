@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find the Capital</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="./darkmode.js" defer></script>
+    <script src="./app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<header>
+    <button id="theme-switch">
+        <img id="light-icon" src="light_mode.svg" alt="Light Mode Icon" style="display: none;">
+        <img id="dark-icon" src="dark_mode.svg" alt="Dark Mode Icon">
+    </button>
+</header>
+
+<div class="need">
+    <h1>FIND THE CAPITAL!</h1>
+    <button id="startGame" disabled>Start</button>
+    <button id="restartGame" disabled>Again</button>
+
+    <div id="timer">TIME: 15</div>
+    <div id="score">BALL: 0/10</div>
+    <div id="result"></div>
+
+    <div id="questionContainer"></div>
+
+    <div id="optionsContainer"></div>
+</div>
+<div id="endMessage"></div>
+</body>
+</html>
