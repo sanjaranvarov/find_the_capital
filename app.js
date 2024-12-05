@@ -60,8 +60,7 @@ const displayQuestion = () => {
         document.getElementById('result').innerText = 'GAME OVER!';
         clearInterval(timerId);
 
-        const endMessage = getEndMessage(score);
-        document.getElementById('endMessage').innerText = endMessage;
+        document.getElementById('endMessage').innerText = getEndMessage(score);
 
         // Save results to localStorage
         localStorage.setItem('gameResults', JSON.stringify({ score, totalQuestions: 10 }));
@@ -79,7 +78,7 @@ const displayQuestion = () => {
     const options = [questionCountry, ...otherOptions].sort(() => Math.random() - 0.5);
 
     document.getElementById('questionContainer').innerText =
-        `QUESTION ${currentQuestionIndex + 1}: WHAT IS THE CAPITAL OF ${questionCountry.name.common}?`;
+        `Question ${currentQuestionIndex + 1}: What is the capital of ${questionCountry.name.common}?`;
 
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
